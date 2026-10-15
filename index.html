@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CarePoint Hospital | Appointments</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f2f8fc;color:#243447}
+header{background:#087e8b;color:white;padding:22px 8%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;margin:0 10px}
+.hero{text-align:center;padding:50px 20px;background:#d9f2f2}
+.hero h2{font-size:34px}
+.container{padding:28px 8%}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:white;padding:22px;border-radius:12px;box-shadow:0 3px 12px #dce6ed}
+.doctor{font-size:42px}
+button{background:#087e8b;color:white;border:0;border-radius:6px;padding:11px 16px;cursor:pointer}
+input,select{width:100%;padding:11px;margin:8px 0 15px;border:1px solid #ccd5dd;border-radius:6px}
+.notice{background:#e0f4e8;padding:18px;border-left:5px solid #249b62}
+footer{text-align:center;background:#243447;color:white;padding:20px}
+</style>
+</head>
+<body>
+<header>
+<h1>🏥 CarePoint Hospital</h1>
+<nav><a href="#doctors">Doctors</a><a href="#appointments">Appointments</a><a href="#news">Announcements</a></nav>
+</header>
+
+<section class="hero">
+<h2>Your Health, Our Priority</h2>
+<p>Find specialists and request your hospital appointment online.</p>
+<a href="#appointments"><button>Book an Appointment</button></a>
+</section>
+
+<section class="container" id="doctors">
+<h2>Our Doctors</h2>
+<div class="grid">
+<div class="card"><div class="doctor">👨‍⚕️</div><h3>Dr. Rahul Sharma</h3><p>Cardiology</p><p>Consultation: ₹600</p><p>Mon–Fri · 9 AM–1 PM</p></div>
+<div class="card"><div class="doctor">👩‍⚕️</div><h3>Dr. Priya Reddy</h3><p>Dermatology</p><p>Consultation: ₹500</p><p>Mon–Sat · 10 AM–2 PM</p></div>
+<div class="card"><div class="doctor">👨‍⚕️</div><h3>Dr. Arjun Kumar</h3><p>Orthopedics</p><p>Consultation: ₹550</p><p>Tue–Sat · 2 PM–6 PM</p></div>
+</div>
+</section>
+
+<section class="container" id="appointments">
+<div class="card">
+<h2>Request an Appointment</h2>
+<form id="appointmentForm">
+<label>Patient Name</label>
+<input id="patient" required placeholder="Enter patient name">
+<label>Select Doctor</label>
+<select id="doctor" required>
+<option value="">Choose a specialist</option>
+<option>Dr. Rahul Sharma — Cardiology</option>
+<option>Dr. Priya Reddy — Dermatology</option>
+<option>Dr. Arjun Kumar — Orthopedics</option>
+</select>
+<label>Preferred Date</label>
+<input id="date" type="date" required>
+<button type="submit">Submit Request</button>
+</form>
+<p id="message" role="status"></p>
+</div>
+</section>
+
+<section class="container" id="news">
+<div class="notice">
+<h2>Hospital Announcements</h2>
+<p>General health check-up consultations are available this month. Contact the hospital to confirm availability.</p>
+</div>
+</section>
+
+<footer>© 2026 CarePoint Hospital · Your Health Matters</footer>
+
+<script>
+document.getElementById('date').min = new Date().toISOString().split('T')[0];
+document.getElementById('appointmentForm').addEventListener('submit', function(e){
+ e.preventDefault();
+ document.getElementById('message').textContent =
+ 'Thank you, ' + document.getElementById('patient').value +
+ '. Your demo appointment request has been recorded for ' +
+ document.getElementById('doctor').value + ' on ' +
+ document.getElementById('date').value + '. Please contact the hospital to confirm.';
+});
+</script>
+</body>
+</html>
